@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<title>{% block title %}PFA base{% endblock %}</title>
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'PFA/css/knacss.css' %}"/>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" href="{% static 'PFA/js/jquery.js' %}"></script>
+{% endblock %}
+
+</head>
+<body>
+    
+</body>
+</html>

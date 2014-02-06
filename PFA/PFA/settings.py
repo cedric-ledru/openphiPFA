@@ -22,7 +22,7 @@ SECRET_KEY = 'w(mtu#%%2h#c*dnqs%8k#zw)sye_qi7wdsegekke(vsu(^7@)s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
 
@@ -51,6 +51,9 @@ ROOT_URLCONF = 'PFA.urls'
 
 WSGI_APPLICATION = 'PFA.wsgi.application'
 
+ADMINS = (
+    ('Thomas Miele', 'thomas.miele@epitech.eu'),
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -58,7 +61,11 @@ WSGI_APPLICATION = 'PFA.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'PFA/dbs/db.sqlite3'),
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -67,7 +74,8 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+#TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Paris'
 
 USE_I18N = True
 
@@ -80,3 +88,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    'PFA/static',
+)
+
+# Apps templates dir tree
+# always make subdir templates
+# in subdir "templates" -> make subdir with appname
+# So for use a template files, you do "AppName/file.html"
+# If you want to use a template file from another app
+# you can do use "AnotherAppName/same_name_template.html"
+# |--appname
+#    |-- templates
+#        |-- appname
+#            *.html
+TEMPLATE_DIRS = (
+    # syntax : appname/templates
+    # project dir
+    'PFA/templates',
+    # here, add apps templates
+
+)
