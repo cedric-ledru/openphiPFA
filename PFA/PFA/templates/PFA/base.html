@@ -6,17 +6,56 @@
 <title>{% block title %}PFA base{% endblock %}</title>
 
 {% load static %}
-
 {% block styles %}
-<link rel="stylesheet" href="{% static 'PFA/css/knacss.css' %}"/>
-{% endblock %}
-
-{% block scripts %}
-<script type="text/javascript" href="{% static 'PFA/js/jquery.js' %}"></script>
-{% endblock %}
-
+<link rel="stylesheet" href="{% static 'PFA/bootstrap/css/bootstrap.css' %}"/>
+<link rel="stylesheet" href="{% static 'PFA/bootstrap/css/bootstrap-theme.css' %}"/>
+{% endblock styles %}
 </head>
 <body>
-    
+
+<header class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url "PFA.views.home" %}" title="Home">OpenPhi</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="{% url "PFA.views.home" %}">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li class="navbar-text">{{ user.username }}</li>
+                <li><a class="btn btn-link" href="{% url "auth.views.signOut" %}">Sign Out</a></li>
+                {% else %}
+                <li><a class="btn btn-link" href="{% url "auth.views.signIn" %}">Sign In</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</header>
+
+
+<div class="container">
+{%  block main_content %}
+    <div class="col-lg-8 col-lg-offset-2 text-center">
+        <h1>Bootstrap starter template</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+    </div>
+{% endblock %}
+</div>
+
 </body>
+{% block scripts %}
+<script type="text/javascript" href="{% static 'PFA/js/jquery.js' %}"></script>
+<script type="text/javascript" href="{% static 'PFA/bootstrap/js/bootstrap.js' %}"></script>
+{% endblock scripts %}
 </html>

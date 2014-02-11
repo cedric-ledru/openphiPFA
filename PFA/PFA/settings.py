@@ -22,7 +22,7 @@ SECRET_KEY = 'w(mtu#%%2h#c*dnqs%8k#zw)sye_qi7wdsegekke(vsu(^7@)s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -36,6 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # add here your apps
+    'auth',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -108,5 +110,5 @@ TEMPLATE_DIRS = (
     # project dir
     'PFA/templates',
     # here, add apps templates
-
+    'auth/templates',
 )
