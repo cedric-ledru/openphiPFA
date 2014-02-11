@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'PFA.views.home'),
     url(r'^auth/', include('auth.urls')),
+    url(r'^cms/', include('cms.urls')),
 )
 
 urlpatterns += staticfiles_urlpatterns()

@@ -21,8 +21,11 @@ def signIn(request):
                 error = True
     else:
         form = UserForm()
-    return render(request, 'auth/user.html', locals())
+    return render(request, 'auth/signin.html', locals())
 
 def signOut(request):
     logout(request)
     return redirect(reverse('PFA.views.home'))
+
+def profile(request):
+    return render(request, 'auth/profile.html', {})

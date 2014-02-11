@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # add here your apps
     'auth',
+    'cms'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -111,4 +112,5 @@ TEMPLATE_DIRS = (
     'PFA/templates',
     # here, add apps templates
     'auth/templates',
+    'cms/templates',
 )

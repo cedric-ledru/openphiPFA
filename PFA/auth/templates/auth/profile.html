@@ -1,0 +1,13 @@
+{% extends "PFA/base.html" %}
+
+{% block main_content %}
+
+<h1>Profile</h1>
+
+{% if user.is_authenticated %}
+<p class="alert alert-success">You are logged !</p>
+{% else %}
+<p class="alert alert-danger">You are not logged !</p>
+{% endif %}
+
+{% endblock main_content %}

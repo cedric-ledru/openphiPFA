@@ -33,7 +33,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
-                <li class="navbar-text">{{ user.username }}</li>
+                <li><a class="btn btn-link" href="{% url "auth.views.profile" %}">{{ user.username }}</a></li>
                 <li><a class="btn btn-link" href="{% url "auth.views.signOut" %}">Sign Out</a></li>
                 {% else %}
                 <li><a class="btn btn-link" href="{% url "auth.views.signIn" %}">Sign In</a></li>
