@@ -2,10 +2,15 @@
 
 {% block main_content %}
 
-<h1>Profile</h1>
-
 {% if user.is_authenticated %}
-<p class="alert alert-success">You are logged !</p>
+<h1>{{ user.first_name|capfirst }} {{ user.last_name|capfirst }}</h1>
+<table>
+    <tr>
+        <td></td>
+    </tr>
+</table>
+
+<p class="alert alert-success"><strong>{{ user.username }}</strong>, you are logged !</p>
 {% else %}
 <p class="alert alert-danger">You are not logged !</p>
 {% endif %}
