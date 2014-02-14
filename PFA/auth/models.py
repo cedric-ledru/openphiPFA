@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class OpenphiUser(models.Model):
-    user = models.OneToOneField(User)
+    auth = models.OneToOneField(User)
 
     def __str__(self):
-        return self.user.username
+        return self.auth.username

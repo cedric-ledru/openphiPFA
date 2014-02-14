@@ -6,48 +6,48 @@
 <title>{% block title %}PFA base{% endblock %}</title>
 
 {% load static %}
-{% block styles %}
+{% block styles %}<!--
 <link rel="stylesheet" href="{% static 'PFA/bootstrap/css/bootstrap.css' %}"/>
 <link rel="stylesheet" href="{% static 'PFA/bootstrap/css/bootstrap-theme.css' %}"/>
+-->
+<link rel="stylesheet" href="{% static 'PFA/css/knacss.css' %}"/>
+<link rel="stylesheet" href="{% static 'PFA/css/pfa.css' %}"/>
 {% endblock styles %}
 </head>
 <body>
 
-<header class="navbar navbar-default navbar-static-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{% url "PFA.views.home" %}" title="Home">OpenPhi</a>
-        </div>
-
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="{% url "PFA.views.home" %}">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                {% if user.is_authenticated %}
-                <li><a class="btn btn-link" href="{% url "auth.views.profile" %}">{{ user.username }}</a></li>
-                <li><a class="btn btn-link" href="{% url "auth.views.signOut" %}">Sign Out</a></li>
-                {% else %}
-                <li><a class="btn btn-link" href="{% url "auth.views.signIn" %}">Sign In</a></li>
-                {% endif %}
-            </ul>
-        </div>
+<header class="row mb3 txtcenter pfa-header">
+{% block main_header %}
+    <div class="col w20">
+        <a href="{% url "PFA.views.home" %}" title="Home">OpenPhi</a>
     </div>
+    <nav class="col">
+        <ul>
+            <li class="inbl"><a href="#">Explore</a></li>
+            <li class="inbl"><a href="#contact">Contact</a></li>
+            {% if user.is_authenticated %}
+            <li class="inbl"><a href="/admin">Admin</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <nav class="col w33">
+        <ul>
+            {% if user.is_authenticated %}
+            <li class="inbl"><a href="{% url "auth.views.profile" %}">{{ user.username }}</a></li>
+            <li class="inbl"><a href="{% url "auth.views.signOut" %}">Sign Out</a></li>
+            {% else %}
+            <li class="inbl"><a href="{% url "auth.views.signIn" %}">Sign In</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock main_header %}
 </header>
 
-<div class="container">
+<div class="ml3 mr3">
 {%  block main_content %}
-    <div class="col-lg-8 col-lg-offset-2 text-center">
+    <div class="txtcenter">
         <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <p>Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
     </div>
 {% endblock %}
 </div>
@@ -55,6 +55,5 @@
 </body>
 {% block scripts %}
 <script type="text/javascript" href="{% static 'PFA/js/jquery.js' %}"></script>
-<script type="text/javascript" href="{% static 'PFA/bootstrap/js/bootstrap.js' %}"></script>
 {% endblock scripts %}
 </html>
