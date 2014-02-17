@@ -1,18 +1,15 @@
 {% extends "auth/base.html" %}
 
 {% block main_content %}
+<div class="container">
 
 {% if user.is_authenticated %}
 <h1>{{ user.first_name|capfirst }} {{ user.last_name|capfirst }}</h1>
-<table>
-    <tr>
-        <td></td>
-    </tr>
-</table>
 
 <p class="alert alert-success"><strong>{{ user.username }}</strong>, you are logged !</p>
 {% else %}
 <p class="alert alert-danger">You are not logged !</p>
 {% endif %}
 
+</div>
 {% endblock main_content %}

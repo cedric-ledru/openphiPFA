@@ -1,28 +1,19 @@
 {% extends "auth/base.html" %}
 
 {% block main_content %}
-
-{% if error %}
-<p>Error : bad login or password !</p>
-{% endif %}
+<div class="container">
 
 {% if user.is_authenticated %}
-<p><strong>{{ user.username }}</strong>, you are connected !</p>
+<p class="alert alert-success"><strong>{{ user.username }}</strong>, you are connected !</p>
 {% else %}
-
-<form role="form" method="post" action="{% url "auth.views.signIn" %}">
+<form class="jumbotron form-as-custom" role="form" method="post" action="{% url "auth.views.signIn" %}">
     {% csrf_token %}
 
     <h1>Sign In</h1>
 
-    {{ form.errors }}
-
-    {% for field in form %}
-        <p>{{ field.label_tag }}</p>
-        <p>{{ field }}</p>
-    {% endfor %}
-
-    <p><button type="submit">Sign In</button></p>
+    {{ form.as_p }}
+    
+    <button class="btn btn-primary" type="submit">Sign In</button>
 </form>
 {% endif %}
 

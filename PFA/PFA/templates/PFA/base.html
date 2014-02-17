@@ -1,59 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <title>{% block title %}PFA base{% endblock %}</title>
 
-<meta charset="utf-8">
-<title>{% block title %}PFA base{% endblock %}</title>
+    {% load static %}
+    {% block main_styles %}
+    <link rel="stylesheet" href="{% static 'PFA/bootstrap/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'PFA/bootstrap/css/bootstrap-theme.css' %}"/>
+    <link rel="stylesheet" href="{% static 'PFA/css/pfa.css' %}"/>
+    {% endblock %}
 
-{% load static %}
-{% block styles %}<!--
-<link rel="stylesheet" href="{% static 'PFA/bootstrap/css/bootstrap.css' %}"/>
-<link rel="stylesheet" href="{% static 'PFA/bootstrap/css/bootstrap-theme.css' %}"/>
--->
-<link rel="stylesheet" href="{% static 'PFA/css/knacss.css' %}"/>
-<link rel="stylesheet" href="{% static 'PFA/css/pfa.css' %}"/>
-{% endblock styles %}
+    {% block main_scripts %}
+    <script type="text/javascript" src="{% static 'PFA/js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'PFA/bootstrap/js/bootstrap.js' %}"></script>
+    {% endblock %}
 </head>
 <body>
 
-<header class="row mb3 txtcenter pfa-header">
 {% block main_header %}
-    <div class="col w20">
-        <a href="{% url "PFA.views.home" %}" title="Home">OpenPhi</a>
+<header class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">OpenPhi</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Other</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Divers</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li><a href="{% url "auth.views.profile" %}">{{ user.username }}</a></li>
+                <li><a href="/admin/">Admin</a></li>
+                <li><a href="{% url "auth.views.signOut" %}">Sign Out</a></li>
+                {% else %}
+                <li><a href="{% url "auth.views.signIn" %}">Sign In</a></li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
-    <nav class="col">
-        <ul>
-            <li class="inbl"><a href="#">Explore</a></li>
-            <li class="inbl"><a href="#contact">Contact</a></li>
-            {% if user.is_authenticated %}
-            <li class="inbl"><a href="/admin">Admin</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-    <nav class="col w33">
-        <ul>
-            {% if user.is_authenticated %}
-            <li class="inbl"><a href="{% url "auth.views.profile" %}">{{ user.username }}</a></li>
-            <li class="inbl"><a href="{% url "auth.views.signOut" %}">Sign Out</a></li>
-            {% else %}
-            <li class="inbl"><a href="{% url "auth.views.signIn" %}">Sign In</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-{% endblock main_header %}
 </header>
+{% endblock main_header %}
 
-<div class="ml3 mr3">
 {%  block main_content %}
-    <div class="txtcenter">
+<div class="container">
+    <div class="text-center">
         <h1>Bootstrap starter template</h1>
-        <p>Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
     </div>
-{% endblock %}
 </div>
+{% endblock %}
 
-</body>
 {% block scripts %}
-<script type="text/javascript" href="{% static 'PFA/js/jquery.js' %}"></script>
-{% endblock scripts %}
+<!-- extends specific scripts here-->
+{% endblock %}
+</body>
 </html>
