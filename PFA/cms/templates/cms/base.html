@@ -7,13 +7,18 @@
 
 {% block main_content %}
 <div class="container">
+    {% if user.is_authenticated %}
+    <h1>Documents de {{ user.username }}</h1>
+    <p><a class="btn btn-primary" href="{% url "cms.views.create" %}">Créer un document</a><p/>
     <ul>
-        <li><a class="btn btn-primary" href="{% url "cms.views.create" %}">Créer un document</a></li>
     {% for doc in docs %}
-        <li>{{ doc.title }}</li>
+        <li><a class="btn btn-link" href="{% url "cms.views.display" user.username doc.id %}">{{ doc.title }}</a></li>
     {% empty %}
         <li>Aucun document</li>
     {% endfor %}
     </ul>
+    {% else %}
+    <p class="alert alert-danger">Vous devez être connectez !</p>
+    {% endif%}
 </div>
 {% endblock %}

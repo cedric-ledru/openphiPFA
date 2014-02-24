@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
+from django.core.files import File
+
 from cms.models import Document
 
 # Create your views here.
@@ -8,6 +10,13 @@ from cms.models import Document
 def home(request):
     docs = request.user.document_set.all()
     return render(request, 'cms/base.html', locals())
+
+def display(request, user_login, id_doc):
+    doc = Document.objects.get(id=id_doc)
+    content = ""
+    for line in doc.path:
+            content += str(line)
+    return render(request, 'cms/display.html', locals())
 
 @login_required
 def create(request):

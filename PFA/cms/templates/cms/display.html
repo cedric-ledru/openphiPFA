@@ -1,0 +1,11 @@
+{% extends "cms/base.html" %}
+
+{% block main_content %}
+<div class="container">
+    <h1>{{ doc.title }}</h1>
+    <p>URL : {{ doc.path.url }}</p>
+<xml>
+    {{ content }}
+</xml>
+</div>
+{% endblock %}
