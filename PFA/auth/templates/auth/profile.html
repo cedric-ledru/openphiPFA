@@ -2,14 +2,13 @@
 
 {% block main_content %}
 <div class="container">
-
 {% if user.is_authenticated %}
-<h1>{{ user.first_name|capfirst }} {{ user.last_name|capfirst }}</h1>
-
-<p class="alert alert-success"><strong>{{ user.username }}</strong>, you are logged !</p>
+    <ul class="nav nav-pills">
+        <li class="active"><a href="{% url "auth.views.profile" %}">{{ user.first_name|capfirst }} {{ user.last_name|capfirst }}</a></li>
+        <li><a href="#">Paramètres</a></li>
+    </ul>
 {% else %}
 <p class="alert alert-danger">You are not logged !</p>
 {% endif %}
-
 </div>
 {% endblock main_content %}

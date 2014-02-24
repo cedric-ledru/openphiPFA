@@ -1,1 +1,19 @@
 {% extends "PFA/base.html" %}
+
+{% load static %}
+{% block extends_scripts %}
+<script type="text/javascript" src="{% static "PFA/js/angular.min.js" %}"></script>
+{% endblock %}
+
+{% block main_content %}
+<div class="container">
+    <ul>
+        <li><a class="btn btn-primary" href="{% url "cms.views.create" %}">Créer un document</a></li>
+    {% for doc in docs %}
+        <li>{{ doc.title }}</li>
+    {% empty %}
+        <li>Aucun document</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

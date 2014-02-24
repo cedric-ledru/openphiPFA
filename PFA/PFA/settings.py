@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # add here your apps
     'auth',
-    'cms'
+    'cms',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -98,6 +98,10 @@ STATICFILES_DIRS = (
     'PFA/static',
 )
 
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR + '/PFA/dbs/media/'
+
 # Apps templates dir tree
 # always make subdir templates
 # in subdir "templates" -> make subdir with appname
@@ -116,3 +120,5 @@ TEMPLATE_DIRS = (
     'auth/templates',
     'cms/templates',
 )
+
+LOGIN_URL = '/auth/login/'
