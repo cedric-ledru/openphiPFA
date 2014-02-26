@@ -13,9 +13,9 @@ def home(request):
 
 def display(request, user_login, id_doc):
     doc = Document.objects.get(id=id_doc)
-    content = ""
+    content = b""
     for line in doc.path:
-            content += str(line)
+            content += (line)
     return render(request, 'cms/display.html', locals())
 
 @login_required

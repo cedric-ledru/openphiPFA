@@ -1,10 +1,10 @@
-{% extends "auth/base.html" %}
+{% extends "phiauth/base.html" %}
 
 {% block main_content %}
 <div class="container">
 {% if user.is_authenticated %}
     <ul class="nav nav-pills">
-        <li class="active"><a href="{% url "auth.views.profile" %}">{{ user.first_name|capfirst }} {{ user.last_name|capfirst }}</a></li>
+        <li class="active"><a href="{% url "phiauth.views.profile" %}">{{ user.first_name|capfirst }} {{ user.last_name|capfirst }}</a></li>
         <li><a href="#">Paramètres</a></li>
     </ul>
 {% else %}

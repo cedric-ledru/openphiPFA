@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse, resolve
 # Create your views here.
 from django.contrib.auth import authenticate, login, logout
 
-from auth.forms import SignInForm
+from phiauth.forms import SignInForm
 
 def signIn(request):
     error = False
@@ -21,11 +21,11 @@ def signIn(request):
                 error = True
     else:
         form = SignInForm()
-    return render(request, 'auth/signin.html', locals())
+    return render(request, 'phiauth/signin.html', locals())
 
 def signOut(request):
     logout(request)
     return redirect(reverse('PFA.views.home'))
 
 def profile(request):
-    return render(request, 'auth/profile.html', {})
+    return render(request, 'phiauth/profile.html', {})

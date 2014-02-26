@@ -1,4 +1,4 @@
-{% extends "auth/base.html" %}
+{% extends "phiauth/base.html" %}
 
 {% block main_content %}
 <div class="container">
@@ -6,7 +6,7 @@
 {% if user.is_authenticated %}
 <p class="alert alert-success"><strong>{{ user.username }}</strong>, you are connected !</p>
 {% else %}
-<form class="jumbotron form-as-custom" role="form" method="post" action="{% url "auth.views.signIn" %}">
+<form class="jumbotron form-as-custom" role="form" method="post" action="{% url "phiauth.views.signIn" %}">
     {% csrf_token %}
 
     <h1>Sign In</h1>

@@ -8,6 +8,6 @@ class Document(models.Model):
     path = models.FileField(upload_to="%Y/%m/%d")
     author = models.ForeignKey(User)
     date = models.DateTimeField(auto_now_add=True, auto_now=False)
-
+    
     def __str__(self):
         return self.title

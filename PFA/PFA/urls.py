@@ -14,7 +14,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'PFA.views.home'),
-    url(r'^auth/', include('auth.urls')),
+    url(r'^auth/', include('phiauth.urls')),
     url(r'^cms/', include('cms.urls')),
 )
 

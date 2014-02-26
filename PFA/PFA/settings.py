@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # add here your apps
-    'auth',
+    'phiauth',
     'cms',
 )
 
