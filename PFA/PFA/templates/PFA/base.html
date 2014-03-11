@@ -5,16 +5,16 @@
     <title>{% block title %}OpenPhi{% endblock %}</title>
 
     {% load static %}
-    {% block main_styles %}
+    {% block project_styles %}
     <link rel="stylesheet" href="{% static "PFA/bootstrap/css/bootstrap.css" %}"/>
     <link rel="stylesheet" href="{% static "PFA/bootstrap/css/bootstrap-theme.css" %}"/>
     <link rel="stylesheet" href="{% static "PFA/css/pfa.css" %}"/>
     {% endblock %}
-    {% block styles %}
-    <!-- specific styles here -->
-    {% endblock %}
+
+    {% block app_styles %}<!-- Add here styles for an entire Django app -->{% endblock%}
+    {% block styles %}<!-- specific view styles here -->{% endblock %}
 </head>
-<body>
+<body>{% block body %}
 
 {% block main_header %}
 <header class="navbar navbar-default navbar-static-top" role="navigation">
@@ -64,15 +64,13 @@
 </div>
 {% endblock %}
 
-{% block main_scripts %}
+{% endblock body %}
+{% block project_scripts %}
 <script type="text/javascript" src="{% static "PFA/js/jquery.min.js" %}"></script>
 <script type="text/javascript" src="{% static "PFA/bootstrap/js/bootstrap.js" %}"></script>
 {% endblock %}
-{% block extends_scripts %}
-<!-- adds important scripts here for several views-->
-{% endblock %}
-{% block scripts %}
-<!-- extends specific scripts here-->
-{% endblock %}
+
+{% block app_scripts %}<!-- Scripts for an entire Django app -->{% endblock %}
+{% block scripts %}<!-- extends specific view scripts here-->{% endblock %}
 </body>
 </html>

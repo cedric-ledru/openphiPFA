@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.files import File
 
 from cms.models import Document
+#from cms.forms import CreateDocumentForm
 
 # Create your views here.
 @login_required
@@ -20,4 +21,8 @@ def display(request, user_login, id_doc):
 
 @login_required
 def create(request):
-    return render(request, 'cms/create.html', {})
+    return render(request, 'cms/create.html', locals())
+
+@login_required
+def update(request, id_doc):
+    return render(request, 'cms/create.html', locals())
