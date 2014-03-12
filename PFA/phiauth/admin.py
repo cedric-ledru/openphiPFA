@@ -1,6 +1,6 @@
 from django.contrib import admin
 
 # Register your models here.
-from phiauth.models import User
+from phiauth.models import PhiUser
 
-admin.site.register(User)
+admin.site.register(PhiUser)

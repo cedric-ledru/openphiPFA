@@ -122,6 +122,6 @@ TEMPLATE_DIRS = (
     'cms/templates',
 )
 
-LOGIN_URL = '/auth/login/'
+LOGIN_URL = 'phiauth.views.signIn'
 
 SITE_ID = 1
